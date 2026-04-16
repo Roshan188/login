@@ -1,139 +1,116 @@
 # DevFolio - Build Progress
 
 ## Project Overview
-Production-grade developer portfolio platform built with Next.js 15, TypeScript, Tailwind CSS, shadcn/ui-style components, Drizzle ORM, NextAuth.js v5, Stripe, Cloudinary, Resend.
+Production-grade developer portfolio platform built with Next.js 15, TypeScript, Tailwind CSS, shadcn/ui-style components, Drizzle ORM, NextAuth.js v5, Stripe, Cloudinary.
 
 ---
 
 ## Phase 0: Initialization - COMPLETED [2026-04-16]
-
-### Files Created:
-- PROGRESS.md, NEXT_STEPS.md, DECISIONS.md
-- package.json (Next.js 15, TypeScript, all dependencies)
-- tsconfig.json, next.config.ts, tailwind.config.ts, postcss.config.js
-- .eslintrc.json, .prettierrc, .gitignore, .env.example
-- src/styles/globals.css (design system CSS variables + utilities)
-- src/lib/utils.ts (cn, slugify, formatDate, etc.)
-- src/types/index.ts, src/types/next-auth.d.ts
-
-### Build Passing: YES ✓
-
----
-
 ## Phase 1: Database & Auth Foundation - COMPLETED [2026-04-16]
-
-### Files Created:
-- src/db/schema.ts (full DB schema: users, accounts, sessions, portfolios, projects, subscriptions, companies, analytics)
-- src/db/relations.ts (Drizzle relations for all tables)
-- src/db/index.ts (Drizzle client with full schema)
-- drizzle.config.ts
-- src/lib/auth.ts (NextAuth v5 with GitHub + Google providers)
-- src/middleware.ts (protected routes, auth redirects)
-- src/app/api/auth/[...nextauth]/route.ts
-
-### Build Passing: YES ✓
-
----
-
 ## Phase 2: Core UI Framework - COMPLETED [2026-04-16]
-
-### Files Created:
-- src/components/ui/button.tsx (with gradient, glow, glass variants)
-- src/components/ui/card.tsx
-- src/components/ui/badge.tsx (with tech, premium variants)
-- src/components/ui/input.tsx
-- src/components/ui/avatar.tsx
-- src/components/ui/separator.tsx
-- src/components/providers/theme-provider.tsx
-- src/components/layout/site-header.tsx
-- src/components/layout/site-footer.tsx
-- src/components/layout/theme-toggle.tsx
-- src/components/landing/hero-section.tsx (animated with Framer Motion)
-- src/components/landing/features-section.tsx
-- src/components/landing/showcase-section.tsx
-- src/components/landing/pricing-section.tsx
-- src/components/landing/cta-section.tsx
-- src/components/auth/sign-in-form.tsx
-- src/components/dashboard/sidebar.tsx
-- src/components/dashboard/header.tsx
-- src/components/dashboard/overview.tsx
-- src/app/layout.tsx (root layout with Geist fonts)
-- src/app/page.tsx (landing page)
-- src/app/auth/signin/page.tsx
-- src/app/auth/error/page.tsx
-- src/app/dashboard/layout.tsx
-- src/app/dashboard/page.tsx
-- src/app/not-found.tsx
-- src/app/error.tsx
-
-### Build Passing: YES ✓
-
----
-
-## Phase 3: Portfolio Management - COMPLETED [2026-04-16]
-
-### Files Created:
-- src/lib/validations.ts (Zod schemas for portfolio, project, user profile)
-- src/app/api/portfolios/route.ts (GET, POST)
-- src/app/api/portfolios/[id]/route.ts (GET, PATCH, DELETE)
-- src/app/api/projects/route.ts (POST)
-- src/app/api/upload/route.ts (Cloudinary upload)
-
----
-
+## Phase 3: Portfolio Management API - COMPLETED [2026-04-16]
+## Phase 4: Dashboard UI (portfolios, projects, settings, analytics, billing) - COMPLETED [2026-04-16]
 ## Phase 5: Public Portfolio Pages - COMPLETED [2026-04-16]
-
-### Files Created:
-- src/app/[slug]/page.tsx (dynamic public portfolio with SEO metadata)
-- src/components/portfolio/public-portfolio.tsx
-
----
-
-## Phase 6: Discovery/Explore - COMPLETED [2026-04-16]
-
-### Files Created:
-- src/app/explore/page.tsx
-- src/components/explore/explore-grid.tsx
+## Phase 6: Explore/Discovery Page - COMPLETED [2026-04-16]
+## Phase 7: Stripe Payments Integration - COMPLETED [2026-04-16]
+## Phase 10: Sitemap, robots.txt, README - COMPLETED [2026-04-16]
 
 ---
 
-## Next Phase: Continue with Phase 4 (Project management UI), Phase 7 (Stripe), Phase 8 (Company portal)
+## Build Status: PASSING ✓ (24 routes)
 
-### Next Tasks:
-1. Dashboard portfolio list page + create form
-2. Dashboard project management UI
-3. Stripe integration (checkout, webhooks, billing page)
-4. Settings page (profile edit)
-5. Company portal
+## Git: 2 commits pushed to claude/init-devfolio-project-jRbKX
 
-### File Structure:
+---
+
+## Remaining (Future Sessions)
+- Phase 8: Company portal (search developers, contact system, job postings)
+- Phase 9: Advanced analytics (Posthog, weekly email digests)
+- Full-text search (Postgres tsvector on portfolios/projects)
+- Email templates (Resend - welcome, subscription confirmation)
+- Sentry error tracking integration
+- Rate limiting (Upstash Redis)
+- Company portal auth flow
+- Custom domain verification (Phase 7 premium feature)
+
+---
+
+## Complete File Structure (98 files total)
+
 ```
 src/
 ├── app/
-│   ├── [slug]/page.tsx          ← Public portfolio
+│   ├── [slug]/page.tsx                    ← Public portfolio
 │   ├── api/
-│   │   ├── auth/[...nextauth]/
-│   │   ├── portfolios/
-│   │   ├── projects/
-│   │   └── upload/
+│   │   ├── auth/[...nextauth]/route.ts
+│   │   ├── portfolios/route.ts + [id]/
+│   │   ├── projects/route.ts
+│   │   ├── stripe/checkout/route.ts
+│   │   ├── upload/route.ts
+│   │   ├── user/profile/route.ts
+│   │   └── webhooks/stripe/route.ts
 │   ├── auth/signin/ + error/
 │   ├── dashboard/
+│   │   ├── analytics/
+│   │   ├── billing/
+│   │   ├── portfolios/ + new/
+│   │   ├── projects/ + new/
+│   │   ├── settings/
+│   │   ├── layout.tsx
+│   │   └── page.tsx
 │   ├── explore/
+│   ├── pricing/
 │   ├── layout.tsx
-│   ├── page.tsx
+│   ├── page.tsx (landing)
 │   ├── not-found.tsx
-│   └── error.tsx
+│   ├── error.tsx
+│   ├── robots.ts
+│   └── sitemap.ts
 ├── components/
-│   ├── auth/
+│   ├── auth/sign-in-form.tsx
 │   ├── dashboard/
-│   ├── explore/
+│   │   ├── analytics-dashboard.tsx
+│   │   ├── billing-dashboard.tsx
+│   │   ├── header.tsx
+│   │   ├── overview.tsx
+│   │   ├── portfolio-form.tsx
+│   │   ├── portfolio-list.tsx
+│   │   ├── project-form.tsx
+│   │   ├── project-list.tsx
+│   │   ├── settings-form.tsx
+│   │   └── sidebar.tsx
+│   ├── explore/explore-grid.tsx
 │   ├── landing/
+│   │   ├── cta-section.tsx
+│   │   ├── features-section.tsx
+│   │   ├── hero-section.tsx
+│   │   ├── pricing-section.tsx
+│   │   └── showcase-section.tsx
 │   ├── layout/
-│   ├── portfolio/
-│   ├── providers/
+│   │   ├── site-footer.tsx
+│   │   ├── site-header.tsx
+│   │   └── theme-toggle.tsx
+│   ├── portfolio/public-portfolio.tsx
+│   ├── providers/theme-provider.tsx
 │   └── ui/
-├── db/ (schema + relations + index)
-├── lib/ (auth + utils + validations)
-├── styles/ (globals.css)
-└── types/ (index + next-auth.d.ts)
+│       ├── avatar.tsx
+│       ├── badge.tsx
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── input.tsx
+│       └── separator.tsx
+├── db/
+│   ├── index.ts
+│   ├── relations.ts
+│   └── schema.ts
+├── lib/
+│   ├── auth.ts
+│   ├── stripe.ts
+│   ├── utils.ts
+│   └── validations.ts
+├── middleware.ts
+├── styles/globals.css
+└── types/
+    ├── index.ts
+    └── next-auth.d.ts
 ```
