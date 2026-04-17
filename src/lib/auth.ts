@@ -5,6 +5,7 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@/db";
 import { users, accounts, sessions, verificationTokens } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { sendWelcomeEmail } from "@/lib/email";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(db, {
@@ -95,6 +96,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         })
         .where(eq(users.id, user.id!))
         .catch(() => null);
+
+      if (user.email) {
+        const displayName = user.name ?? username;
+        sendWelcomeEmail(user.email, displayName).catch(() => null);
+      }
     },
   },
   session: {
