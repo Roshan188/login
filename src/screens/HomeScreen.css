@@ -1,0 +1,125 @@
+/* Sensei — Home / Landing Screen */
+
+.home-wrapper {
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+.home-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #141928;
+  border-bottom: 1px solid #1e2a42;
+}
+
+.home-user {
+  font-size: 14px;
+  color: #8892b0;
+}
+
+.btn-signout {
+  background: transparent;
+  border: 1px solid #1e2a42;
+  color: #8892b0;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ── Landing ─────────────────────────────────────────────────────────────── */
+.home-landing {
+  min-height: 100vh;
+  background: #0a0e1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  gap: 32px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #e8eaf6;
+}
+
+.landing-header {
+  text-align: center;
+}
+
+.landing-title {
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 10px;
+  background: linear-gradient(135deg, #00e5ff, #7b2fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.landing-sub {
+  color: #8892b0;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 12px 0 0;
+}
+
+/* ── Features ────────────────────────────────────────────────────────────── */
+.landing-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 360px;
+  width: 100%;
+}
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #141928;
+  border: 1px solid #1e2a42;
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+
+.feature-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.feature-text {
+  font-size: 14px;
+  color: #c8cfe8;
+  line-height: 1.4;
+}
+
+/* ── CTA Button ──────────────────────────────────────────────────────────── */
+.btn-signin {
+  width: 100%;
+  max-width: 360px;
+  padding: 18px;
+  background: linear-gradient(135deg, #00e5ff, #7b2fff);
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn-signin:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+.landing-privacy {
+  font-size: 12px;
+  color: #4a5568;
+  text-align: center;
+  max-width: 300px;
+}

@@ -1,0 +1,280 @@
+/* Sensei — Calibration Screen Styles */
+:root {
+  --sensei-bg: #0a0e1a;
+  --sensei-surface: #141928;
+  --sensei-border: #1e2a42;
+  --sensei-accent: #00e5ff;
+  --sensei-accent2: #7b2fff;
+  --sensei-success: #00ff88;
+  --sensei-error: #ff4444;
+  --sensei-text: #e8eaf6;
+  --sensei-muted: #8892b0;
+  --sensei-radius: 16px;
+}
+
+.calibration-screen {
+  min-height: 100vh;
+  background: var(--sensei-bg);
+  color: var(--sensei-text);
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 40px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  user-select: none;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.calib-header {
+  text-align: center;
+  padding: 48px 0 24px;
+}
+
+.sensei-title {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 8px;
+  background: linear-gradient(135deg, var(--sensei-accent), var(--sensei-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.sensei-tagline {
+  color: var(--sensei-muted);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 8px 0 0;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.calib-body {
+  width: 100%;
+  max-width: 420px;
+}
+
+.calib-card {
+  background: var(--sensei-surface);
+  border: 1px solid var(--sensei-border);
+  border-radius: var(--sensei-radius);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.calib-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.calib-card p {
+  color: var(--sensei-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Icon ────────────────────────────────────────────────────────────────── */
+.calib-icon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.calib-icon.success { color: var(--sensei-success); font-style: normal; font-size: 56px; }
+.calib-icon.error   { color: var(--sensei-error);   font-size: 48px; font-weight: 900; }
+
+/* ── Spinner ─────────────────────────────────────────────────────────────── */
+.calib-spinner {
+  width: 56px;
+  height: 56px;
+  border: 3px solid var(--sensei-border);
+  border-top-color: var(--sensei-accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Progress Ring ───────────────────────────────────────────────────────── */
+.calib-timer {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calib-ring {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: var(--sensei-border);
+  stroke-width: 6;
+}
+
+.ring-fg {
+  fill: none;
+  stroke: var(--sensei-accent);
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.2s ease;
+  filter: drop-shadow(0 0 8px var(--sensei-accent));
+}
+
+.calib-timer-label {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--sensei-text);
+  z-index: 1;
+}
+
+/* ── Stats ───────────────────────────────────────────────────────────────── */
+.calib-stats {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sensei-accent);
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--sensei-muted);
+}
+
+/* ── Instructions ────────────────────────────────────────────────────────── */
+.calib-instruction {
+  font-size: 13px;
+  color: var(--sensei-muted);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+/* ── Tips list ───────────────────────────────────────────────────────────── */
+.calib-tips {
+  text-align: left;
+  color: var(--sensei-muted);
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0;
+  padding-left: 20px;
+  width: 100%;
+}
+
+.calib-description {
+  text-align: left;
+  width: 100%;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.btn-primary {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--sensei-accent), var(--sensei-accent2));
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.btn-primary:active { transform: scale(0.97); opacity: 0.9; }
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--sensei-border);
+  color: var(--sensei-muted);
+  font-size: 14px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-secondary:hover { border-color: var(--sensei-accent); color: var(--sensei-accent); }
+
+/* ── Device Summary ──────────────────────────────────────────────────────── */
+.device-summary {
+  width: 100%;
+  text-align: left;
+}
+
+.device-summary h3 {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sensei-muted);
+  margin: 0 0 8px;
+}
+
+.device-summary code {
+  display: block;
+  font-size: 12px;
+  color: var(--sensei-accent);
+  background: rgba(0, 229, 255, 0.06);
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+/* ── Export ──────────────────────────────────────────────────────────────── */
+.export-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn-export {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid var(--sensei-accent);
+  color: var(--sensei-accent);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.15s;
+}
+.btn-export:hover { background: rgba(0, 229, 255, 0.18); }
+
+/* ── Error ───────────────────────────────────────────────────────────────── */
+.calib-error { border-color: rgba(255, 68, 68, 0.3); }
+.error-message {
+  color: var(--sensei-error) !important;
+  font-weight: 600;
+}
